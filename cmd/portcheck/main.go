@@ -44,8 +44,12 @@ func usage() {
 
 func main() {
 	args := getArgs()
-	for i := 0; i < args.count; i++ {
+	for i := 0; ; {
+		i++
 		fmt.Printf("%d %s:%s - %s\n", i, args.host, args.port, connect(args.host, args.port))
+		if i >= args.count {
+			break
+		}
 		time.Sleep(time.Second)
 	}
 }
