@@ -16,14 +16,15 @@ import (
 	"time"
 )
 
-type Args struct {
+type args struct {
 	host  string
 	port  string
 	count int
 }
 
-func getArgs() Args {
-	var args Args
+func getArgs() args {
+	var args args
+	flag.Usage = usage
 	count := flag.Int("count", 1, "Number of packets to send")
 	flag.Parse()
 	if flag.NArg() != 2 {
